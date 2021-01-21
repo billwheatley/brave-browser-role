@@ -1,0 +1,15 @@
+---
+- name: Ensure Brave apt signing key is present
+  ansible.builtin.apt_key:
+    url: https://brave-browser-apt-release.s3.brave.com/brave-core.asc
+    state: present
+- name: Ensure Brave apt repo is present
+  apt_repository:
+    repo: deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main
+    state: present
+    filename: brave-browser-release
+- name: Ensure Brave package is present
+  apt:
+    update_cache: yes
+    name: brave-browser
+    state: present

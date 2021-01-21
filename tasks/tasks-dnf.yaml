@@ -1,0 +1,14 @@
+---
+- name: Ensure Brave Browser repo is present
+  yum_repository:
+    name: brave-browser-release
+    description: Brave Browser Release
+    baseurl: https://brave-browser-rpm-release.s3.brave.com/x86_64/
+    enabled: yes
+    gpgcheck: yes
+    gpgkey: https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
+- name: Ensure Brave Browser dnf package is present
+  dnf:
+    update_cache: yes
+    name: brave-browser
+    state: present
