@@ -13,3 +13,5 @@
     update_cache: yes
     name: brave-browser
     state: present
+  retries: 3
+  delay: 3
