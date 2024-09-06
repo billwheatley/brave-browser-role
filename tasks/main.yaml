@@ -1,8 +1,12 @@
 ---
-- name: 'Ensure Brave is provisioned for package manager ({{ ansible_pkg_mgr }})'
-  include_tasks: 'tasks-{{ ansible_pkg_mgr }}.yaml'
-  when: ansible_pkg_mgr in ('apt', 'dnf')
+- name: 'Ensure Brave is provisioned for package manager dnf'
+  include_tasks: 'tasks-dnf.yaml'
+  when: ansible_pkg_mgr in ('dnf5', 'dnf')
+
+- name: 'Ensure Brave is provisioned for package manager apt'
+  include_tasks: 'tasks-apt.yaml'
+  when: ansible_pkg_mgr in ('apt')
 
 - fail:
     msg: ERROR This role is not setup to deal with package manager {{ ansible_pkg_mgr }}
-  when: ansible_pkg_mgr not in ('apt', 'dnf')
+  when: ansible_pkg_mgr not in ('apt', 'dnf', 'dnf5')
