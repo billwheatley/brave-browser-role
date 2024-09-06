@@ -8,7 +8,7 @@ This was designed as part of a desktop provisioning playbooks found here <https:
 Requirements
 ------------
 
-- A distribution with `dnf` or `apt`
+- A distribution with `dnf` 'dnf5` or `apt`
 
 Role Variables
 --------------
